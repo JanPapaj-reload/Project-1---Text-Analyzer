@@ -1,5 +1,5 @@
 '''
-author =
+author = Jan Papaj
 '''
 TEXTS = ['''
 Situated about 10 miles west of Kemmerer, 
@@ -63,17 +63,14 @@ print("Alright then, let's now crunch Text", text_selection,":")
 print("-"*80)
 # 5. text operations
 # splitting the texts into iterable lists of strings, getting rid of commas and periods
-split_text1_1 = TEXTS[0].replace(",", " ")
-split_text1_2 = split_text1_1.replace(".", " ")
-split_text1_3 = split_text1_2.split()
+split_text1 = TEXTS[0].replace(",.", " ")
+split_text1 = split_text1.split()
 
-split_text2_1 = TEXTS[1].replace(",", " ")
-split_text2_2 = split_text2_1.replace(".", " ")
-split_text2_3 = split_text2_2.split()
+split_text2 = TEXTS[1].replace(",.", " ")
+split_text2 = split_text2.split()
 
-split_text3_1 = TEXTS[2].replace(",", " ")
-split_text3_2 = split_text3_1.replace(".", " ")
-split_text3_3 = split_text3_2.split()
+split_text3 = TEXTS[2].replace(",.", " ")
+split_text3 = split_text3.split()
 
 # variable for uppercase / lowercase membership test
 uppercase = ["A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L", "M", "N", "O", "P", "Q", "R", "S", "T",
@@ -97,35 +94,35 @@ fourteen_plus_words = []
 
 if text_selection == 1:
     # words total
-    total_text1_3 = len(split_text1_3)
-    print("In Text 1 there are", total_text1_3, "words,")
+    total_text1 = len(split_text1)
+    print("In Text 1 there are", total_text1, "words,")
     # num of titlecased
-    capital_text1_3 = []
-    for item in split_text1_3:
+    capital_text1 = []
+    for item in split_text1:
         if item[0] in uppercase:
-            capital_text1_3.append(item)
-    print("of which", len(capital_text1_3),"are capitalized.")
+            capital_text1.append(item)
+    print("of which", len(capital_text1), "are capitalized.")
     # num of uppercased
-    uppercase_text1_3 = []
-    for item in split_text1_3:
+    uppercase_text1 = []
+    for item in split_text1:
         if item.isupper() == True:
-            uppercase_text1_3.append(item)
-    print("There are also", len(uppercase_text1_3), "uppercase")
+            uppercase_text1.append(item)
+    print("There are also", len(uppercase_text1), "uppercase")
     # num of lowercased
-    lowercase_text3_3 = []
-    for item in split_text1_3:
+    lowercase_text1 = []
+    for item in split_text1:
         if item.islower() == True:
-            lowercase_text3_3.append(item)
-    print("and", len(lowercase_text3_3), "lowercase words.")
+            lowercase_text1.append(item)
+    print("and", len(lowercase_text1), "lowercase words.")
     # num of all-numeric
-    numeric_text3_3 = []
-    for item in split_text1_3:
+    numeric_text1 = []
+    for item in split_text1:
         if item.isalnum():
-            numeric_text3_3.append(item)
-    print("Last but not least, there are", len(numeric_text3_3), "all-numeric strings.")
+            numeric_text1.append(item)
+    print("Last but not least, there are", len(numeric_text1), "all-numeric strings.")
     print("-"*80)
     # graphic bar representation
-    for item in split_text1_3:
+    for item in split_text1:
         if len(item) == 2:
             two_words.append(item)
         elif len(item) == 3:
@@ -171,42 +168,42 @@ if text_selection == 1:
     print("-"*80)
     # sum of all-numeric words
     sum_1 = 0
-    for item in split_text1_3:
+    for item in split_text1:
         if item.isdigit() is True:
             sum_1 += int(item)
     print("...and the sum of all numeric words here is", sum_1)
 
 elif text_selection == 2:
     # words total
-    total_text2_3 = len(split_text2_3)
-    print("In Text 2 there are", total_text2_3, "words,")
+    total_text2 = len(split_text2)
+    print("In Text 2 there are", total_text2, "words,")
     # num of titlecased
-    capital_text2_3 = []
-    for item in split_text2_3:
+    capital_text2 = []
+    for item in split_text2:
         if item[0] in uppercase:
-            capital_text2_3.append(item)
-    print("of which", len(capital_text2_3), "are capitalized.")
+            capital_text2.append(item)
+    print("of which", len(capital_text2), "are capitalized.")
     # num of uppercased
-    uppercase_text2_3 = []
-    for item in split_text2_3:
+    uppercase_text2 = []
+    for item in split_text2:
         if item.isupper() == True:
-            uppercase_text2_3.append(item)
-    print("There are also", len(uppercase_text2_3), "uppercase")
+            uppercase_text2.append(item)
+    print("There are also", len(uppercase_text2), "uppercase")
     # num of lowercased
-    lowercase_text2_3 = []
-    for item in split_text2_3:
+    lowercase_text2 = []
+    for item in split_text2:
         if item.islower() == True:
-            lowercase_text2_3.append(item)
-    print("and", len(lowercase_text2_3), "lowercase words.")
+            lowercase_text2.append(item)
+    print("and", len(lowercase_text2), "lowercase words.")
     # num of all-numeric
-    numeric_text2_3 = []
-    for item in split_text2_3:
+    numeric_text2 = []
+    for item in split_text2:
         if item.isalnum():
-            numeric_text2_3.append(item)
-    print("Last but not least, there are", len(numeric_text2_3), "all-numeric strings.")
+            numeric_text2.append(item)
+    print("Last but not least, there are", len(numeric_text2), "all-numeric strings.")
     print("-" * 80)
     # graphic bar representation
-    for item in split_text2_3:
+    for item in split_text2:
         if len(item) == 2:
             two_words.append(item)
         elif len(item) == 3:
@@ -252,42 +249,42 @@ elif text_selection == 2:
     print("-" * 80)
     # sum of numeric words
     sum_1 = 0
-    for item in split_text2_3:
+    for item in split_text2:
         if item.isdigit() is True:
             sum_1 += int(item)
     print("...and the sum of all numeric words here is", sum_1)
 
 else:
     # words total
-    total_text3_3 = len(split_text3_3)
-    print("In Text 3 there are", total_text3_3, "words,")
+    total_text3 = len(split_text3)
+    print("In Text 3 there are", total_text3, "words,")
     # num of titlecased
-    capital_text3_3 = []
-    for item in split_text3_3:
+    capital_text3 = []
+    for item in split_text3:
         if item[0] in uppercase:
-            capital_text3_3.append(item)
-    print("of which", len(capital_text3_3), "are capitalized.")
+            capital_text3.append(item)
+    print("of which", len(capital_text3), "are capitalized.")
     # num of uppercased
-    uppercase_text3_3 = []
-    for item in split_text3_3:
+    uppercase_text3 = []
+    for item in split_text3:
         if item.isupper() == True:
-            uppercase_text3_3.append(item)
-    print("There are also", len(uppercase_text3_3), "uppercase")
+            uppercase_text3.append(item)
+    print("There are also", len(uppercase_text3), "uppercase")
     # num of lowercased
-    lowercase_text3_3 = []
-    for item in split_text3_3:
+    lowercase_text3 = []
+    for item in split_text3:
         if item.islower() == True:
-            lowercase_text3_3.append(item)
-    print("and", len(lowercase_text3_3), "lowercase words.")
+            lowercase_text3.append(item)
+    print("and", len(lowercase_text3), "lowercase words.")
     # num of all-numeric
-    numeric_text3_3 = []
-    for item in split_text3_3:
+    numeric_text1 = []
+    for item in split_text3:
         if item.isalnum():
-            numeric_text3_3.append(item)
-    print("Last but not least, there are", len(numeric_text3_3), "all-numeric strings.")
+            numeric_text1.append(item)
+    print("Last but not least, there are", len(numeric_text1), "all-numeric strings.")
     print("-" * 80)
     # graphic bar representation
-    for item in split_text3_3:
+    for item in split_text3:
         if len(item) == 2:
             two_words.append(item)
         elif len(item) == 3:
@@ -333,7 +330,7 @@ else:
     print("-" * 80)
     # sum of numeric words
     sum_1 = 0
-    for item in split_text3_3:
+    for item in split_text3:
         if item.isdigit() is True:
             sum_1 += int(item)
     print("...and the sum of all numeric words here is", sum_1)

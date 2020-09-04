@@ -38,8 +38,13 @@ dict_hesla = {
     "liz" : "pass123",
 }
 
+def line_separator():
+    print("-"*50)
+
+
+
 # 1. Welcome to app
-print("-" * 80)
+line_separator()
 print("Hi there. Long time no see.")
 
 # 2. username and password, stripped of potential whitespaces and uppercase
@@ -54,13 +59,13 @@ while password != dict_hesla[username]:
 print("Username:", username)
 print("Password:", password)
 
-print("-" * 80)
+line_separator()
 
 # 4. text selection input
 print("We have 3 texts to be analyzed.")
 text_selection = int(input("Select a number 1-3 to choose a specific text: "))
 print("Alright then, let's now crunch Text", text_selection,":")
-print("-"*80)
+line_separator()
 # 5. text operations
 # splitting the texts into iterable lists of strings, getting rid of commas and periods
 split_text1 = TEXTS[0].replace(",.", " ")
@@ -120,7 +125,7 @@ if text_selection == 1:
         if item.isalnum():
             numeric_text1.append(item)
     print("Last but not least, there are", len(numeric_text1), "all-numeric strings.")
-    print("-"*80)
+    line_separator()
     # graphic bar representation
     for item in split_text1:
         if len(item) == 2:
@@ -165,7 +170,7 @@ if text_selection == 1:
     print("13", len(thirteen_words) * "*", len(thirteen_words))
     print("14", len(fourteen_words) * "*", len(fourteen_words))
     print("14+", len(fourteen_plus_words) * "*", len(fourteen_plus_words))
-    print("-"*80)
+    line_separator()
     # sum of all-numeric words
     sum_1 = 0
     for item in split_text1:
@@ -201,7 +206,7 @@ elif text_selection == 2:
         if item.isalnum():
             numeric_text2.append(item)
     print("Last but not least, there are", len(numeric_text2), "all-numeric strings.")
-    print("-" * 80)
+    line_separator()
     # graphic bar representation
     for item in split_text2:
         if len(item) == 2:
@@ -246,7 +251,7 @@ elif text_selection == 2:
     print("13", len(thirteen_words) * "*", len(thirteen_words))
     print("14", len(fourteen_words) * "*", len(fourteen_words))
     print("14+", len(fourteen_plus_words) * "*", len(fourteen_plus_words))
-    print("-" * 80)
+    line_separator()
     # sum of numeric words
     sum_1 = 0
     for item in split_text2:
@@ -282,7 +287,7 @@ else:
         if item.isalnum():
             numeric_text1.append(item)
     print("Last but not least, there are", len(numeric_text1), "all-numeric strings.")
-    print("-" * 80)
+    line_separator()
     # graphic bar representation
     for item in split_text3:
         if len(item) == 2:
@@ -327,13 +332,13 @@ else:
     print("13", len(thirteen_words) * "*", len(thirteen_words))
     print("14", len(fourteen_words) * "*", len(fourteen_words))
     print("14+", len(fourteen_plus_words) * "*", len(fourteen_plus_words))
-    print("-" * 80)
+    line_separator()
     # sum of numeric words
     sum_1 = 0
     for item in split_text3:
         if item.isdigit() is True:
             sum_1 += int(item)
     print("...and the sum of all numeric words here is", sum_1)
-print("-"*80)
+line_separator()
 
 

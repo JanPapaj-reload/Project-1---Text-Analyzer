@@ -33,10 +33,12 @@ while True:
         print("Total:", total)
         break
 
+reply_list[:] = [int(x) for x in reply_list]
+
 # get maximum, minimum and average of the integers in a list without a build in functions
 max = 0
 min = 0
-for num in list(map(int, reply_list)):
+for num in reply_list:
     if num > max:
         max = num
     elif num < min:
@@ -48,13 +50,12 @@ average = round(total / len(reply_list), 2)
 print("Average:", average)
 
 # create immutable copy a list and clear original data
-immutable = tuple(map(int, reply_list))
-print(immutable)
+immutable = tuple(reply_list)
 reply_list.clear()
 
 # BONUS: can you also print the indexes of maximum and minimum?
-max = 0
-min = 0
+max = immutable[0]
+min = immutable[0]
 index_max = 0
 index_min = 0
 for i, num in enumerate(immutable):
@@ -64,5 +65,5 @@ for i, num in enumerate(immutable):
     elif num < min:
         min = num
         index_min = i
-print("The index of max value:", index_max)
-print("The index of min value:", index_min)
+print("The index of max value:", index_max+1)
+print(f"The index of min value:", index_min+1)

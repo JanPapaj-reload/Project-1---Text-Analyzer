@@ -37,7 +37,7 @@ dict_hesla = {
     "mike" : "password123",
     "liz" : "pass123",
 }
-
+text_selection = 0
 def line_separator():
     print("-"*50)
 
@@ -54,24 +54,23 @@ def login():
         password = input("The password is not valid. Try inserting it again: ").lower().strip()
     print("Username:", username)
     print("Password:", password)
-    line_separator()
 
 
-def text_selection():
+def text_select(text_selection):
     print("We have 3 texts to be analyzed.")
-    text_selection = input("Select a number 1-3 to choose a specific text: ")
+    text_selection = input("Select a number 1-3 to analyze a specific text: ")
     try:
         if str(text_selection.isalpha()) == True:
             text_selection = input("You have to key in a number between 1 and 3: ")
         elif not 1 <= int(text_selection) <= 3:
             text_selection = input("You have to key in a number between 1 and 3: ")
     except:
-        text_selection = input("Key in a NUMBER between 1 and 3: ")
-    print("Alright then, let's now crunch Text", text_selection, ":-)")
-    line_separator()
+        text_selection = int(input("Key in a NUMBER between 1 and 3: "))
+    print("Alright then, let's now crunch Text", text_selection, ".")
 
 
-def split_text(text_selection):
+def split_Text(x):
+    global split_text
     split_text = TEXTS[text_selection]
     split_text = split_text.replace(",.!?", " ")
     split_text = split_text.split()
@@ -79,7 +78,8 @@ def split_text(text_selection):
 
 
 def words_sum(split_text):
-    result = len(split_text)
+    result = len(list(split_text))
+    print("There are", result, "words.")
     return result
 
 
@@ -88,6 +88,7 @@ def titlecase(split_text):
     for word in split_text:
         if word.istitle():
             result += 1
+    print(f"There are {result} titlecase words in the text.")
     return result
 
 
@@ -96,6 +97,7 @@ def uppercase(split_text):
     for word in split_text:
         if word.isupper():
             result += 1
+    print(f"There are {result} uppercase words in the text.")
     return result
 
 
@@ -104,24 +106,26 @@ def lowercase(split_text):
     for word in split_text:
         if word.islower():
             result += 1
+    print(f"There are {result} lowercase words in the text.")
     return result
 
 
 def sum_numeric(split_text):
     result = 0
-    for num in split_text:
-        if num.isnumeric():
-            result += 1
-    return result
+    for word in split_text:
+        if word.isnumeric():
+            result += int(word)
+    print(f"If we sum up all numbers there, we will get {float(result)}.")
+    return float(result)
 
 
 def text_analyzer(texts):
     line_separator()
     login()
     line_separator()
-    text_selection()
+    text_select(text_selection)
     line_separator()
-    split_text(text_selection)
+    split_Text(text_select)
     words_sum(split_text)
     titlecase(split_text)
     uppercase(split_text)

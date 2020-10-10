@@ -57,7 +57,7 @@ def compMove(board):
     # series of elif statements in order of priority from top to bottom; where comp needs to move next
     for x in possibleMoves:
         # returns error. no clue why
-        if isWinner(testBoard[x], 'O'):
+        if isWinner(testBoard, 'O'):
             move = x
             return move
         elif 5 in possibleMoves:
@@ -74,15 +74,18 @@ def compMove(board):
             if len(possibleEdges) > 0:
                 move = random.choice(possibleEdges)
                 return move
+    return move
 # one elif statement missing - how comp can block the user from winning on next move.
 
 def program():
     print('Ready to play TicTacToe? Let\'s start.')
+    printBoard(board)
     while boardNotFull(board):
-        userMove(board)
-        if isWinner(board, 'X'):
-            print("You beat the computer.")
-            break
+        if not isWinner(board, 'X'):
+            userMove(board)
+            if isWinner(board, 'X'):
+                print("You beat the computer.")
+                break
         else:
             compMove(board)
     else:

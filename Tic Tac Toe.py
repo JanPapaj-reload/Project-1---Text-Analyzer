@@ -12,7 +12,7 @@ def printBoard(board):
 
 # returns bool whether the space if free, move-1 as I need to ignore index 0
 def isBoxFree(board, move):
-    return board[int(move)-1] == ' '
+    return board[int(move)] == ' '
 
 # return bool whether num of free spaces is greater than 1, index 0 will always stay empty
 def boardNotFull(board):
@@ -44,7 +44,6 @@ def userMove(board):
 
 
 def compMove(board):
-
     # generates all possible moves that comp can take
     possibleMoves = []
     for x, letter in enumerate(board):
@@ -56,7 +55,6 @@ def compMove(board):
 
     # series of elif statements in order of priority from top to bottom; where comp needs to move next
     for x in possibleMoves:
-        # returns error. no clue why
         if isWinner(testBoard, 'O'):
             move = x
             return move
@@ -68,12 +66,12 @@ def compMove(board):
             possibleCorners.append(x)
             if len(possibleCorners) > 0:
                 move = random.choice(possibleCorners)
-                return move
+            return move
         elif x in [2,4,6,8]:
             possibleEdges = []
             if len(possibleEdges) > 0:
                 move = random.choice(possibleEdges)
-                return move
+            return move
     return move
 # one elif statement missing - how comp can block the user from winning on next move.
 
@@ -81,15 +79,16 @@ def program():
     print('Ready to play TicTacToe? Let\'s start.')
     printBoard(board)
     while boardNotFull(board):
-        if not isWinner(board, 'X'):
-            userMove(board)
-            if isWinner(board, 'X'):
-                print("You beat the computer.")
-                break
-        else:
-            compMove(board)
+        userMove(board)
+        if isWinner(board, 'X'):
+            print("You beat the computer.")
+            break
+        compMove(board)
+        if isWinner(board, 'O'):
+            print('The Computer wins. Better luck next time.')
     else:
         print("It's a tie game. Nobody wins.")
+
 
 program()
 

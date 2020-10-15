@@ -1,7 +1,6 @@
 import random
 # creates general scope for these variables
 board = [' ' for pos in range(10)]
-move = 0
 
 def printBoard(board):
         print(' ', board[1], ' | ', board[2], ' | ', board[3], ' ')
@@ -10,11 +9,12 @@ def printBoard(board):
         print('------------------')
         print(' ', board[7], ' | ', board[8], ' | ', board[9], ' ')
 
+
 # handles chosen moves by user and comp
 def inputLetter(letter, move):
     board[move] = letter
 
-# returns bool whether space if free, move-1 as I need to ignore index 0
+# returns bool whether space free, move-1 as I need to ignore index 0
 def isBoxFree(board, move):
     return board[int(move)] == ' '
 
@@ -43,18 +43,21 @@ def userMove(board):
             if 0 < int(move) < 10:
                 if isBoxFree(board,move):
                     inputLetter('X', int(move))
+                    validMove = True
+                    # break
                 else:
                     print("The box is taken. Choose again.")
             else:
                 print("You must type a NUMBER between 1-9!")
         except ValueError:
-            print('You must type a NUMBER!')
+            print('You must type a NUMBER 1-9!')
         finally:
             printBoard(board)
 
 
+
 def compMove(board):
-    move = 0
+    # move = 0
     # generates all possible moves that comp can take
     possibleMoves = []
     for x, letter in enumerate(board):
@@ -67,25 +70,25 @@ def compMove(board):
     # series of elif statements in order of priority from top to bottom; where comp needs to move next
     for x in possibleMoves:
         if isWinner(testBoard, 'O'):
-            # return inputLetter('O', move)
-            return move
+            return inputLetter('O', x)
+            # return move
         elif 5 in possibleMoves:
-            # return inputLetter('O', move)
-            return move
+            inputLetter('O', 5)
+            # return move
         elif x in [1,3,7,9]:
             possibleCorners = []
             possibleCorners.append(x)
             if len(possibleCorners) > 0:
-                move = random.choice(possibleCorners)
-            # return inputLetter('O', move)
-            return move
+                x = random.choice(possibleCorners)
+            return inputLetter('O', x)
+            # return move
         elif x in [2,4,6,8]:
             possibleEdges = []
             if len(possibleEdges) > 0:
-                move = random.choice(possibleEdges)
-            # return inputLetter('O', move)
-            return move
-    return inputLetter('O', move)
+                x = random.choice(possibleEdges)
+            return inputLetter('O', x)
+            # return move
+    return inputLetter('O', x)
 # one elif statement missing - how comp can block the user from winning on next move.
 
 # prepracoval jsem while cyklus pro stridani user- a compMove.
@@ -93,11 +96,12 @@ def compMove(board):
 # kazdopadne program se chova nahodile - nekdy comp policko obsadi, casto vubec ne. nemuzu prijit na to proc.
 def program():
     print('Ready to play TicTacToe? Let\'s start.')
+    move = 0
     printBoard(board)
     while boardNotFull(board):
         if not isWinner(board, 'O'):
            userMove(board)
-           inputLetter('X', move)
+           # inputLetter('X', move)
            if isWinner(board, 'X'):
                 print("You beat the computer.")
                 break
@@ -105,6 +109,8 @@ def program():
         if not isWinner(board, 'X'):
             compMove(board)
             inputLetter('O', move)
+            print('And the computer takes:')
+            printBoard(board)
             if isWinner(board, 'O'):
                 print("The computer beat you. Better luck next time.")
                 break

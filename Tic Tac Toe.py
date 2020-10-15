@@ -69,6 +69,7 @@ def compMove(board):
 
     # series of elif statements in order of priority from top to bottom; where comp needs to move next
     for x in possibleMoves:
+        # this condition checks if x move will result in winning?
         if isWinner(testBoard, 'O'):
             return inputLetter('O', x)
             # return move

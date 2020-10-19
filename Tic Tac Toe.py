@@ -35,7 +35,7 @@ def isWinner(board, char):
 
 
 def userMove(board):
-    # and maybe while here is nonsense, as the comp and user must take turns! but no time to rething the code now.
+    # and maybe while here is nonsense, as the comp and user must take turns! but no time to rethink the code now.
     validMove = False
     while not validMove:
         move = input("Choose a number 1-9 to place your 'X': ")
@@ -58,7 +58,8 @@ def userMove(board):
 
 def compMove(board):
     # move = 0
-    # generates all possible moves that comp can take
+    possibleCorners = []
+    possibleEdges = []
     possibleMoves = []
     for x, letter in enumerate(board):
         if board[x] == ' ' and x != 0:
@@ -69,32 +70,29 @@ def compMove(board):
 
     # series of elif statements in order of priority from top to bottom; where comp needs to move next
     for x in possibleMoves:
+        testBoard[x] = 'O'
         # this condition checks if x move will result in winning?
         if isWinner(testBoard, 'O'):
             return inputLetter('O', x)
-            # return move
+            # return x
         elif 5 in possibleMoves:
-            inputLetter('O', 5)
-            # return move
+            return inputLetter('O', 5)
+            # return x
         elif x in [1,3,7,9]:
-            possibleCorners = []
-            possibleCorners.append(x)
             if len(possibleCorners) > 0:
                 x = random.choice(possibleCorners)
-            return inputLetter('O', x)
-            # return move
+                return inputLetter('O', x)
+            # return x
         elif x in [2,4,6,8]:
-            possibleEdges = []
             if len(possibleEdges) > 0:
                 x = random.choice(possibleEdges)
-            return inputLetter('O', x)
-            # return move
+                return inputLetter('O', x)
+        # test move must be removed from the testBoard now
+        testBoard[x] = ''
     return inputLetter('O', x)
 # one elif statement missing - how comp can block the user from winning on next move.
 
-# prepracoval jsem while cyklus pro stridani user- a compMove.
-# nadefinoval jsem nove funcki pro vepisovani zvoleneho pole. tam jsem se musel insirovat na webu.
-# kazdopadne program se chova nahodile - nekdy comp policko obsadi, casto vubec ne. nemuzu prijit na to proc.
+
 def program():
     print('Ready to play TicTacToe? Let\'s start.')
     move = 0
@@ -109,7 +107,7 @@ def program():
 
         if not isWinner(board, 'X'):
             compMove(board)
-            inputLetter('O', move)
+            # inputLetter('O', move)
             print('And the computer takes:')
             printBoard(board)
             if isWinner(board, 'O'):
@@ -129,8 +127,9 @@ program()
 # while playAgain:
 #     play_again = input("Play again? (Y / N): ")
 #     print(play_again)
-#     if play_again == 'Y':
+#     if play_again.upper() == 'Y':
 #         program()
 #     else:
 #         print("Thank you for playing. Good bye!")
+#         playAgain = False
 
